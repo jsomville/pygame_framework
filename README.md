@@ -1,8 +1,8 @@
 # pygame_framework
 This project contain a simple frawework for pygame developement.
-This project is build on top of the previous iteration [].
+This project is build on top of the previous iteration https://github.com/jsomville/pygame_template.
 
-![result image](pygame_template.png)
+![application_template_screenshot](pygame_template.png)
 
 This template shows:
  - How to initialize a project
