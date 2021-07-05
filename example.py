@@ -1,27 +1,30 @@
 #!/usr/bin/env python3
 from enum import Enum
 from datetime import datetime
+
 import pygame
 from pygame.locals import *
 
-from Colors import Colors
-from Scene1 import Scene1
+#Import Scene Here
+from example_Scene1 import Scene1
+from example_SceneMenu import Scene_Menu
 
 class App:
-    windowWidth = 1152
-    windowHeight = 768
-    FPS = 35
-
-    #Handle scenes
-    scenes = dict()
-    active_scene = None
 
     def __init__(self):
         """ App object initialization function, here you set variables default values"""
+        self.windowWidth = 1152
+        self.windowHeight = 768
+        self.FPS = 10
+
         self._running = True
         self._display_surf = None
         self.image = None
         self.frame_per_sec = None
+
+        self.scenes = dict()
+        self.active_scene = None
+
 
     def on_init(self):
         """Game initialisation function, here you load scenes, images, sounds, etc."""
@@ -32,18 +35,33 @@ class App:
         self.frame_per_sec = pygame.time.Clock()
 
         #Set the window caption
-        pygame.display.set_caption("Advanced template for a pygame application")
+        pygame.display.set_caption("pygame_template Example")
 
-        #Load scenes
-        scene1 = Scene1()
-        scene1.size = (self.windowWidth, self.windowHeight)
-        self.scenes[scene1.name] = scene1
-        self.active_scene = scene1
+        #*************************************
+        #SCENE Declaration !!!
 
-        #Add another scene here
-        #scene2 = aScene()
-        #scene2.size = (self.windowWidth, self.windowHeight)
-        #self.scenes[scene2.name] = scene2
+        #Load scene with Menu 
+        aScene = Scene_Menu()
+        aScene.size = (self.windowWidth, self.windowHeight)
+        self.add_scene(aScene)
+
+        #Load scenes with Random Rectangle
+        aScene = Scene1()
+        aScene.size = (self.windowWidth, self.windowHeight)
+        self.add_scene(aScene)
+
+
+        #Set active scene
+        self.active_scene = self.scenes["menu"]
+        #**************************************
+
+        #Enable the control loop 
+        self._running = True
+
+
+    def add_scene(self, aScene):
+        aScene.on_init()
+        self.scenes[aScene.name] = aScene
 
 
     def on_event(self, event):
@@ -52,16 +70,27 @@ class App:
         #Quit Event
         if event.type == pygame.QUIT:
             self._running = False
+        elif event.type == pygame.USEREVENT:
+            #Switch scene event
+            if "goto" in event.__dict__:
+                # Scene on_event
+                print("Goto : " + event.__dict__["goto"])
 
-        #Scene on_event
+                if event.__dict__["goto"] in self.scenes:
+                    self.active_scene = self.scenes[event.__dict__["goto"]]
+                else:
+                    raise Exception('Scene' + event.__dict__["goto"] + " not found")
+
+        #Force on_event management on active scene
         if self.active_scene != None:
-            self.active_scene.on_event(event)
+            if self.active_scene.inited:
+                self.active_scene.on_event(event)
 
 
     def on_loop(self):
         """Function to specify the game logic"""
 
-        #Scene on_loop
+        #Force on_loop on active scene
         if self.active_scene != None:
             self.active_scene.on_loop()
 
@@ -70,22 +99,30 @@ class App:
             if self.active_scene == None:
                 self._running = False
 
+
     def on_render(self):
         """Function specialized for surface rendering only"""
 
-        #Scene on_render
+        #Force on_render on active scene
         if self.active_scene != None:
             self.active_scene.on_render(self._display_surf)
 
+        #Refresh Surface
+        rect = self._display_surf.get_rect()
+        pygame.display.update(rect)
+
+
     def on_cleanup(self):
         """Function to handle app uninitialized"""
+        print("Application Cleanup")
         pygame.quit()
+
 
     def on_execute(self):
         """Main Execute function and main loop, calls on_init, on_event, on_loop, on_logic  """
-        #Init application
-        if self.on_init() == False:
-            self._running = False
+        
+        #Init application and load scenes
+        self.on_init()
 
         #Main Loop
         while (self._running):
@@ -99,8 +136,10 @@ class App:
             #Render code
             self.on_render()
 
+            #Ensure FPS is respected (try at least)
             self.frame_per_sec.tick(self.FPS)
         
+        #On cleanup
         self.on_cleanup()
 
 

@@ -3,10 +3,10 @@
 import pygame
 from pygame.locals import *
 
-from pygame_framework.MenuHOrientation import MenuHOrientation
-from pygame_framework.MenuVOrientation import MenuVOrientation
-from pygame_framework.MenuObjectType import MenuObjectType
-from pygame_framework.MenuTheme import MenuTheme
+from MenuHOrientation import MenuHOrientation
+from MenuVOrientation import MenuVOrientation
+from MenuObjectType import MenuObjectType
+from MenuTheme import MenuTheme
 
 
 class MenuUtil:

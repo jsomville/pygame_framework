@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-from pygame_framework.Colors import Colors
+from Colors import Colors
 
 
 class MenuTheme(dict):
@@ -9,10 +9,9 @@ class MenuTheme(dict):
         self["window_width"] = 1152
         self["window_height"] = 768
 
-        self["base_size"] = (200, 40)
+        self["base_size"] = (250, 40)
         self["space"] = 10
         self["font"] = 'arial'
-        #self["font"] = 'Comic Sans MS'
 
         self["heading"] = dict()
         self["heading"][1] = 30
