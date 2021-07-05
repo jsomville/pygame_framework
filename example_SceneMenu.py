@@ -41,6 +41,11 @@ class Scene_Menu(SceneMenu):
 
         #****************************************
 
+        #Load pygame image
+        img = "images/pygame.png"
+        self.image = pygame.image.load(img).convert_alpha()
+        self.rect = self.image.get_rect(center = (self.width //2, 600))
+
         #Last step of intitialisation
         self.menu_util.on_init(self.size, self.menu_list, self.v_orientation, self.h_orientation)
         self.inited = True
@@ -58,4 +63,8 @@ class Scene_Menu(SceneMenu):
 
         #Draw Title on center surface x
         Util().draw_text_center_x(surface, self.title, self.title_font, Colors.BLACK, 15)
+
+        #Draw pygame Logo
+        surface.blit(self.image, self.rect)
+
 
