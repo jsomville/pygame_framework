@@ -23,7 +23,7 @@ class MenuTheme(dict):
         self["btn_text_color"] = Colors.WHITE
 
         self["title_back_color"] = Colors.DARK_GRAY
-        self["title_text_color"] = Colors.ORANGE
+        self["title_text_color"] = Colors.RED
 
         self["lbl_back_color"] = Colors.LIGHT_GRAY
         self["lbl_text_color"] = Colors.BLACK
