@@ -1,15 +1,14 @@
 #!/usr/bin/env python3
 import pygame
-import random
 
-from Scene import Scene
-from Colors import Colors
-from Util import Util
-from MenuHOrientation import MenuHOrientation
-from MenuVOrientation import MenuVOrientation
-from MenuTheme import MenuTheme
-from MenuUtil import MenuUtil
-from MenuObjectType import MenuObjectType
+from .Scene import Scene
+from .Colors import Colors
+from .Util import Util
+from .MenuHOrientation import MenuHOrientation
+from .MenuVOrientation import MenuVOrientation
+from .MenuTheme import MenuTheme
+from .MenuUtil import MenuUtil
+from .MenuObjectType import MenuObjectType
 
 class SceneMenu(Scene):
     

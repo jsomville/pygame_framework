@@ -6,8 +6,8 @@ import pygame
 from pygame.locals import *
 
 #Import Scene Here
-from example_Scene1 import Scene1
-from example_SceneMenu import Scene_Menu
+from .example_Scene1 import Scene1
+from .example_SceneMenu import Scene_Menu
 
 class App:
 

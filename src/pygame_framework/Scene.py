@@ -2,7 +2,7 @@
 import pygame
 from pygame.locals import *
 
-from Colors import Colors
+from .Colors import Colors
 class Scene(pygame.Rect):
     """This scene class is a pygame rectangle and can handle event, loop, render"""
 
