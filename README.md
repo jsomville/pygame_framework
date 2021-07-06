@@ -1,7 +1,7 @@
 # pygame_framework
 This project contain a simple frawework for pygame developement.
 
-![application_template_screenshot](pygame_template.png)
+![application_template_screenshot](sample.png)
 
 Feature of this framework:
  - Handle Scene (pages within an app)
