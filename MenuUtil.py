@@ -17,8 +17,9 @@ class MenuUtil:
     def __init__(self):
         self.theme = MenuTheme()
 
-        self.menu_font = pygame.font.SysFont(self.theme["font"], 30)
-        self.label_font = pygame.font.SysFont(self.theme["font"], 20)
+        #Load Font
+        self.btn_font = pygame.font.SysFont(self.theme["font"], self.theme["btn_font_size"])
+        self.label_font = pygame.font.SysFont(self.theme["font"], self.theme["title_font_size"])
 
     def on_init(self, window_size, menu, v_orientation, h_orientation):
         menu_pos = self.get_menu_position(window_size, len(menu), v_orientation, h_orientation)
@@ -33,11 +34,11 @@ class MenuUtil:
             if control["type"] == MenuObjectType.TITLE:
                 control["back_color"] = self.theme["title_back_color"]
                 control["text_color"] = self.theme["title_text_color"]
-                control["font"] = self.menu_font
+                control["font"] = self.label_font
             elif control["type"] == MenuObjectType.BUTTON:
                 control["back_color"] = self.theme["btn_back_color"]
                 control["text_color"] = self.theme["btn_text_color"]
-                control["font"] = self.menu_font
+                control["font"] = self.btn_font
                 control["mouse_down"] = False
                 control["click"] = False
             elif control["type"] == MenuObjectType.LABEL:
@@ -65,7 +66,7 @@ class MenuUtil:
         elif v_orientation == MenuVOrientation.CENTER:
             y_start = center_y - menu_height // 2
         elif v_orientation == MenuVOrientation.BOTTOM:
-            y_start = window_size[1] - menu_height - MenuUtil.BASE_MENU_OFFSET  # 20 for space of Title Bar
+            y_start = window_size[1] - menu_height - MenuUtil.BASE_MENU_OFFSET
 
         x_start = 0
         if h_orientation == MenuHOrientation.LEFT:
@@ -105,10 +106,12 @@ class MenuUtil:
                         control["mouse_down"] = False
                         control["click"] = True
 
+
     def draw_menu(self, surface, menu):
+        #For each Menu Control
         for control in menu:
 
-            # Handle Click
+            # Handle text offset when clicked
             control_center = control["rect"].center
             if control["type"] == MenuObjectType.BUTTON:
                 if control["mouse_down"]:
@@ -116,6 +119,9 @@ class MenuUtil:
 
             # Draw background
             pygame.draw.rect(surface, control["back_color"], control["rect"])
+            #bg_rect = control["rect"]
+            #bg_rect.center = control_center
+            #pygame.draw.rect(surface, control["back_color"], bg_rect)
 
             # Draw Text
             if "text" in control:

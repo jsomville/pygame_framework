@@ -18,12 +18,14 @@ class MenuTheme(dict):
         self["heading"][2] = 25
         self["heading"][3] = 20
 
-        self["btn_back_color"] = Colors.DARK_GRAY
+        self["title_back_color"] = Colors.DARK_GRAY
+        self["title_text_color"] = Colors.BLACK
+        self["title_font_size"] = 30
+
+        self["btn_back_color"] = Colors.LIGHT_GRAY
         self["btn_back_hover_color"] = Colors.CHOCOLATE
         self["btn_text_color"] = Colors.WHITE
-
-        self["title_back_color"] = Colors.DARK_GRAY
-        self["title_text_color"] = Colors.RED
+        self["btn_font_size"] = 20
 
         self["lbl_back_color"] = Colors.LIGHT_GRAY
         self["lbl_text_color"] = Colors.BLACK
