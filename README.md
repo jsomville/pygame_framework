@@ -11,11 +11,11 @@ Feature of this framework:
  - Basic Button mechanism
  - Basic Menu mechanism 
 
-## Dependencies
-pygame
-singleton3
+## Installation
+The framework requires the following libraries
+ - pygame>=2.0.1
+ - singleton3>=1.0
 
-## To install
 
 ## Example
 The example shows: (To verify)
