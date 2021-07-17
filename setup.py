@@ -2,12 +2,12 @@ from setuptools import setup, find_packages
 
 VERSION = '0.0.1' 
 DESCRIPTION = 'Framework for pygame'
-LONG_DESCRIPTION = 'A framework to better handle scenes and menu for pygame'
+LONG_DESCRIPTION = 'A framework to better handle scenes and menu for game built using pygame'
 
 # Setting up
 setup(
        # the name must match the folder name 'verysimplemodule'
-        name="jsbmath", 
+        name="pygame_framework", 
         version=VERSION,
         author="JSB",
         author_email="email@domain.com",
@@ -19,11 +19,10 @@ setup(
             'singleton3',
             'pygame'],
         
-        keywords=['python', 'first package'],
+        keywords=['python', 'pygame', "framework"],
         classifiers= [
             "Development Status :: 3 - Alpha",
             "Intended Audience :: Education",
-            "Programming Language :: Python :: 2",
             "Programming Language :: Python :: 3",
         ]
 ) 
