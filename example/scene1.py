@@ -1,12 +1,13 @@
 #!/usr/bin/env python3
+import sys
 import pygame
 import random
 
-from Scene import Scene
-from Colors import Colors
-from Util import Util
+from pygame_framework.Scene import Scene
+from pygame_framework.Colors import Colors
+from pygame_framework.Util import Util
 
-class Scene1(Scene):
+class scene1(Scene):
     
     def on_init(self):
         self.name = "Scene 1"
@@ -20,7 +21,7 @@ class Scene1(Scene):
 
         #Rectangle Generation 
         self.counter = 0
-        self.counter_max = 30
+        self.counter_max = 20 #based on FPS
         self.sampleRect = pygame.Rect(40, 40, 100,100)
 
         #Last step of intitialisation
@@ -57,8 +58,8 @@ class Scene1(Scene):
             self.counter = 0
 
             #Random Rect Position
-            x = random.randint(30, self.width - 100)
-            y = random.randint(5, self.height - 100)
+            x = random.randint(30, self.width - 150)
+            y = random.randint(5, self.height - 150)
 
             #Update Rectangle position
             self.sampleRect.center = (x,y)

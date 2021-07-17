@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-from Colors import Colors
+from .Colors import Colors
 
 
 class MenuTheme(dict):

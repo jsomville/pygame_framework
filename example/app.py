@@ -3,18 +3,17 @@ from enum import Enum
 from datetime import datetime
 
 import pygame
-from pygame.locals import *
+#from pygame.locals import *
 
-#Import Scene Here
-from .example_Scene1 import Scene1
-from .example_SceneMenu import Scene_Menu
+#Import Scenes Here
+from .scene1 import scene1
+from .scene2 import scene2
 
-class App:
-
+class app:
     def __init__(self):
         """ App object initialization function, here you set variables default values"""
-        self.windowWidth = 1152
-        self.windowHeight = 768
+        self.windowWidth = 800
+        self.windowHeight = 600
         self.FPS = 10
 
         self._running = True
@@ -41,12 +40,12 @@ class App:
         #SCENE Declaration !!!
 
         #Load scene with Menu 
-        aScene = Scene_Menu()
+        aScene = scene2()
         aScene.size = (self.windowWidth, self.windowHeight)
         self.add_scene(aScene)
 
         #Load scenes with Random Rectangle
-        aScene = Scene1()
+        aScene = scene1()
         aScene.size = (self.windowWidth, self.windowHeight)
         self.add_scene(aScene)
 
@@ -141,9 +140,3 @@ class App:
         
         #On cleanup
         self.on_cleanup()
-
-
-if __name__ == "__main__":
-    """Program entry function"""
-    theApp = App()
-    theApp.on_execute()

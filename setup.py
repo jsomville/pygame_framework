@@ -1,33 +1,29 @@
-import pathlib
 from setuptools import setup, find_packages
 
-HERE = pathlib.Path(__file__).parent
+VERSION = '0.0.1' 
+DESCRIPTION = 'Framework for pygame'
+LONG_DESCRIPTION = 'A framework to better handle scenes and menu for pygame'
 
-VERSION = '0.1.0'
-PACKAGE_NAME = 'pygame_framework'
-AUTHOR = 'You'
-AUTHOR_EMAIL = 'you@email.com'
-URL = 'https://github.com/jsomville/pygame_framework'
-
-LICENSE = 'Apache License 2.0'
-DESCRIPTION = 'Describe your package in one sentence'
-LONG_DESCRIPTION = ("../README.md").read_text()
-LONG_DESC_TYPE = "text/markdown"
-
-INSTALL_REQUIRES = [
-      'pygame',
-      'singleton3'
-]
-
-setup(name=PACKAGE_NAME,
-      version=VERSION,
-      description=DESCRIPTION,
-      long_description=LONG_DESCRIPTION,
-      long_description_content_type=LONG_DESC_TYPE,
-      author=AUTHOR,
-      license=LICENSE,
-      author_email=AUTHOR_EMAIL,
-      url=URL,
-      install_requires=INSTALL_REQUIRES,
-      packages=find_packages()
-      )
+# Setting up
+setup(
+       # the name must match the folder name 'verysimplemodule'
+        name="jsbmath", 
+        version=VERSION,
+        author="JSB",
+        author_email="email@domain.com",
+        url="https://github.com/jsomville/pygame_framework",
+        description=DESCRIPTION,
+        long_description=LONG_DESCRIPTION,
+        packages=find_packages(),
+        install_requires=[
+            'singleton3',
+            'pygame'],
+        
+        keywords=['python', 'first package'],
+        classifiers= [
+            "Development Status :: 3 - Alpha",
+            "Intended Audience :: Education",
+            "Programming Language :: Python :: 2",
+            "Programming Language :: Python :: 3",
+        ]
+) 

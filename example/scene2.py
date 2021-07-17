@@ -2,16 +2,16 @@
 import pygame
 import random
 
-from SceneMenu import SceneMenu
-from Colors import Colors
-from Util import Util
-from MenuHOrientation import MenuHOrientation
-from MenuVOrientation import MenuVOrientation
-from MenuTheme import MenuTheme
-from MenuUtil import MenuUtil
-from MenuObjectType import MenuObjectType
+from pygame_framework.Colors import Colors
+from pygame_framework.Util import Util
+from pygame_framework.SceneMenu import SceneMenu
+from pygame_framework.MenuHOrientation import MenuHOrientation
+from pygame_framework.MenuVOrientation import MenuVOrientation
+from pygame_framework.MenuTheme import MenuTheme
+from pygame_framework.MenuUtil import MenuUtil
+from pygame_framework.MenuObjectType import MenuObjectType
 
-class Scene_Menu(SceneMenu):
+class scene2(SceneMenu):
     
     def on_init(self):
         self.name = "menu"
@@ -42,9 +42,9 @@ class Scene_Menu(SceneMenu):
         #****************************************
 
         #Load pygame image
-        img = "images/pygame.png"
+        img = "example/images/pygame.png"
         self.image = pygame.image.load(img).convert_alpha()
-        self.rect = self.image.get_rect(center = (self.width //2, 600))
+        self.rect = self.image.get_rect(center = (self.width //2, 440))
 
         #Last step of intitialisation
         self.menu_util.on_init(self.size, self.menu_list, self.v_orientation, self.h_orientation)
