@@ -37,6 +37,8 @@ class scene2(SceneMenu):
 
         self.addMenu("btn1", "Click Rectangle", "Scene 1")
 
+        self.addMenu("btn2", "Play Snake", "Scene 3") # btnQuit : This is a reserved word
+
         self.addMenu("btnQuit", "Quit", None) # btnQuit : This is a reserved word
 
         #****************************************

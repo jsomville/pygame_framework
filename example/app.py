@@ -3,18 +3,18 @@ from enum import Enum
 from datetime import datetime
 
 import pygame
-#from pygame.locals import *
 
 #Import Scenes Here
 from .scene1 import scene1
 from .scene2 import scene2
+from .scene3 import scene3
 
 class app:
     def __init__(self):
         """ App object initialization function, here you set variables default values"""
         self.windowWidth = 800
         self.windowHeight = 600
-        self.FPS = 10
+        self.FPS = 5
 
         self._running = True
         self._display_surf = None
@@ -49,6 +49,10 @@ class app:
         aScene.size = (self.windowWidth, self.windowHeight)
         self.add_scene(aScene)
 
+        #New scene
+        aScene = scene3()
+        aScene.size = (self.windowWidth, self.windowHeight)
+        self.add_scene(aScene)
 
         #Set active scene
         self.active_scene = self.scenes["menu"]
