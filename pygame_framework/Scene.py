@@ -2,7 +2,14 @@
 import pygame
 from pygame.locals import *
 
+from pygame_framework import UI_Button
+
 from .Colors import Colors
+from .UI_Button import UI_Button
+from .UI_Position import UI_Position
+from .UI_Size import UI_Size
+from .MenuObjectType import MenuObjectType
+
 class Scene(pygame.Rect):
     """This scene class is a pygame rectangle and can handle event, loop, render"""
 
@@ -11,8 +18,13 @@ class Scene(pygame.Rect):
         self.next = self
         self.name = "default"
         self.inited = False
-
         self.BACKGROUND = Colors.BLACK
+
+        self.controls = list()
+    
+
+    def addControl(self, control):
+        self.control_list.append(control)
 
     def on_init(self):
         """ Redefine this method in your own class"""
@@ -40,4 +52,12 @@ class Scene(pygame.Rect):
         event_dict["goto"] = where
         new_event = pygame.event.Event(pygame.USEREVENT, event_dict)
         pygame.event.post(new_event)
+    
+    def render_controls(self, surface):
+        for control in self.controls:
+            control.on_render(surface)
 
+
+    def event_controls(self, event):
+        for control in self.controls:
+            control.on_loop(event)
