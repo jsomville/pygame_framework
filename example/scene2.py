@@ -61,10 +61,11 @@ class scene2(SceneMenu):
     def on_render(self, surface):
         surface.fill(self.BACKGROUND)
 
-        SceneMenu.on_render(self, surface)
-
         #Draw Title on center surface x
         Util().draw_text_center_x(surface, self.title, self.title_font, Colors.BLACK, 15)
+
+        #Render Menu
+        SceneMenu.on_render(self, surface)
 
         #Draw pygame Logo
         surface.blit(self.image, self.rect)

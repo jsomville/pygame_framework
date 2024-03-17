@@ -14,7 +14,7 @@ class app:
         """ App object initialization function, here you set variables default values"""
         self.windowWidth = 800
         self.windowHeight = 600
-        self.FPS = 5
+        self.FPS = 10
 
         self._running = True
         self._display_surf = None

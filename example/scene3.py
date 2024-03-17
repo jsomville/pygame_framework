@@ -115,15 +115,11 @@ class scene3(Scene):
 
             #Check if snake is within himself
             check = self.snake[1 :self.snake_lenght-1]
-            print("***")
-            #print(self.snake[0])
-            print(check)
             if self.snake[0] in check:
                 self.set_game_over()
                 
             #Check if target is reached
             if self.snake[0] == self.target:
-                print("target reached")
                 self.level += 1
                 self.generate_target()
                 self.grow_snake(3)
@@ -134,7 +130,6 @@ class scene3(Scene):
                 self.fire_goto_event("menu")
 
     def set_game_over(self):
-        print("Game over")
         self.game_over = True
         self.counter = 0
 
@@ -150,7 +145,6 @@ class scene3(Scene):
         x = random.randint(1, self.grid.x - 1)
         y = random.randint(1, self.grid.y - 1)
         self.target = Point(x,y)
-        print(self.target)
 
     def on_render(self, surface):
         surface.fill(self.BACKGROUND)
