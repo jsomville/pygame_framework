@@ -1,10 +1,8 @@
 
 import pygame
+
 from .UI_Control import UI_Control
 from .MenuObjectType import MenuObjectType
-from .UI_Size import UI_Size
-from .UI_Position import UI_Position
-from .Colors import Colors
 
 class UI_Button(UI_Control):
 
@@ -71,7 +69,6 @@ class UI_Button(UI_Control):
                 self["mouse_down"] = False
 
                 #Fire an event
-                print("click on button")
                 pygame.event.post(self["click_event"])
 
     

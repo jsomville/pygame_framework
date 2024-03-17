@@ -39,6 +39,8 @@ class scene2(SceneMenu):
 
         self.addMenu("btn2", "Play Snake", "Scene 3") # btnQuit : This is a reserved word
 
+        self.addMenu("btn3", "Buttons example", "Scene 4") # btnQuit : This is a reserved word
+
         self.addMenu("btnQuit", "Quit", None) # btnQuit : This is a reserved word
 
         #****************************************
@@ -46,7 +48,7 @@ class scene2(SceneMenu):
         #Load pygame image
         img = "example/images/pygame.png"
         self.image = pygame.image.load(img).convert_alpha()
-        self.rect = self.image.get_rect(center = (self.width //2, 440))
+        self.rect = self.image.get_rect(center = (self.width //2, 500))
 
         #Last step of intitialisation
         self.menu_util.on_init(self.size, self.menu_list, self.v_orientation, self.h_orientation)

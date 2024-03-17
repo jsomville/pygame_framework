@@ -24,7 +24,8 @@ class Scene(pygame.Rect):
     
 
     def addControl(self, control):
-        self.control_list.append(control)
+        control.on_init()
+        self.controls.append(control)
 
     def on_init(self):
         """ Redefine this method in your own class"""

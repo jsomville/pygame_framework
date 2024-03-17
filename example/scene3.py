@@ -4,32 +4,19 @@ import pygame
 from pygame_framework.Scene import Scene
 from pygame_framework.Colors import Colors
 from pygame_framework.Util import Util
-
-class Point():
-    x : int
-    y : int
-
-    def __init__(self, x, y):
-        self.x = x
-        self.y = y
-
-    def __str__(self):
-        return "(" + str(self.x) + "," + str(self.y) + ")"
-
-    def __eq__(self, other):
-        return (self.x == other .x) and (self.y == other.y)
+from pygame_framework.UI_Position import UI_Position
 
 class scene3(Scene):
     def on_init(self):
         self.name = "Scene 3"
         self.counter = 0
 
-        self.grid = Point(80, 80)
+        self.grid = UI_Position(80, 80)
         self.block_lenght = 5
         
         x = (self.width - (self.grid.x * self.block_lenght)) // 2
         y = (self.height - (self.grid.y * self.block_lenght)) // 2
-        self.offset = Point(x, y)
+        self.offset = UI_Position(x, y)
 
         self.reset_snake()
 
@@ -58,7 +45,7 @@ class scene3(Scene):
         self.snake_direction = "RIGHT"
         self.snake = list()
         for i in range(self.snake_lenght):
-            p = Point(start_x - i, start_y)
+            p = UI_Position(start_x - i, start_y)
             self.snake.append(p)
 
     def move_snake(self):
@@ -136,7 +123,7 @@ class scene3(Scene):
     def grow_snake(self, lenght):
         last_point = self.snake[self.snake_lenght -1]
         for i in range(lenght):
-            p = Point(last_point.x, last_point.y)
+            p = UI_Position(last_point.x, last_point.y)
             self.snake.append(p)
         
         self.snake_lenght += lenght
@@ -144,7 +131,7 @@ class scene3(Scene):
     def generate_target(self):
         x = random.randint(1, self.grid.x - 1)
         y = random.randint(1, self.grid.y - 1)
-        self.target = Point(x,y)
+        self.target = UI_Position(x,y)
 
     def on_render(self, surface):
         surface.fill(self.BACKGROUND)

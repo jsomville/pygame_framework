@@ -8,12 +8,15 @@ import pygame
 from .scene1 import scene1
 from .scene2 import scene2
 from .scene3 import scene3
+from .scene4 import scene4
 
 class app:
     def __init__(self):
         """ App object initialization function, here you set variables default values"""
         self.windowWidth = 800
         self.windowHeight = 600
+
+        self.WINDOW_SIZE = (self.windowWidth, self.windowHeight)
         self.FPS = 10
 
         self._running = True
@@ -36,33 +39,35 @@ class app:
         #Set the window caption
         pygame.display.set_caption("pygame_template Example")
 
-        #*************************************
-        #SCENE Declaration !!!
-
-        #Load scene with Menu 
-        aScene = scene2()
-        aScene.size = (self.windowWidth, self.windowHeight)
-        self.add_scene(aScene)
-
-        #Load scenes with Random Rectangle
-        aScene = scene1()
-        aScene.size = (self.windowWidth, self.windowHeight)
-        self.add_scene(aScene)
-
-        #New scene
-        aScene = scene3()
-        aScene.size = (self.windowWidth, self.windowHeight)
-        self.add_scene(aScene)
-
-        #Set active scene
-        self.active_scene = self.scenes["menu"]
-        #**************************************
+        #Add different scenes
+        self.create_scenes()
 
         #Enable the control loop 
         self._running = True
 
+    def create_scenes(self):
+        #Load scene with Menu 
+        aScene = scene2()
+        self.add_scene(aScene)
+
+        #Load scenes with Random Rectangle
+        aScene = scene1()
+        self.add_scene(aScene)
+
+        #New scene
+        aScene = scene3()
+        self.add_scene(aScene)
+
+        #Button scene
+        aScene = scene4()
+        self.add_scene(aScene)
+
+        #Set active scene
+        self.active_scene = self.scenes["menu"]
+
 
     def add_scene(self, aScene):
+        aScene.size = self.WINDOW_SIZE
         aScene.on_init()
         self.scenes[aScene.name] = aScene
 
@@ -82,7 +87,7 @@ class app:
                 if event.__dict__["goto"] in self.scenes:
                     self.active_scene = self.scenes[event.__dict__["goto"]]
                 else:
-                    raise Exception('Scene' + event.__dict__["goto"] + " not found")
+                    raise Exception('Scene: ' + event.__dict__["goto"] + " not found")
 
         #Force on_event management on active scene
         if self.active_scene != None:
